@@ -1,0 +1,24 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src'
+    }
+  }
+}
+
+repositories {                                                                  
+  jcenter()                                                                     
+}                                                                               
+                                                                                
+dependencies {                                                                  
+  providedCompile 'org.apache.tomcat:tomcat-catalina:8.0.45'                    
+}      
+
+war {
+  webAppDirName = 'webapp'
+}
