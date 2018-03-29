@@ -12,6 +12,9 @@ sourceSets {
   }
 }
 
+mainnClassName = "HelloWorld"
+applicationName = "app"
+
 repositories {                                                                  
   jcenter()                                                                     
 }                                                                               
