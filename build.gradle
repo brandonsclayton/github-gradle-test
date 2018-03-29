@@ -17,6 +17,8 @@ repositories {
                                                                                 
 dependencies {                                                                  
   providedCompile 'org.apache.tomcat:tomcat-catalina:8.0.45'                    
+  compile 'com.github.jsimone:webapp-runner:8.5.11.3'
+
 }      
 
 war {
@@ -25,3 +27,13 @@ war {
 
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
+
+
+task copyToLib(type: Copy) {
+    into "$buildDir/server"
+    from(configurations.compile) {
+        include "webapp-runner*"
+    }
+}
+
+stage.dependsOn(copyToLib)
