@@ -22,3 +22,8 @@ dependencies {
 war {
   webAppDirName = 'webapp'
 }
+
+task assembleTest(type: Sync) {                                                 
+    into "${libsDir}/exploded-war"                                              
+    with war                                                                    
+}   
