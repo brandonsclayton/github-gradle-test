@@ -2,6 +2,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
+apply plugin: 'application'
 
 sourceSets {
   main {
@@ -16,24 +17,12 @@ repositories {
 }                                                                               
                                                                                 
 dependencies {                                                                  
-  providedCompile 'org.apache.tomcat:tomcat-catalina:8.0.45'                    
-  compile 'com.github.jsimone:webapp-runner:8.5.11.3'
-
+  compile 'org.eclipse.jetty:jetty-servlet:7.4.5.v20110725'
+  compile 'javax.servlet:servlet-api:2.5'
 }      
 
 war {
   webAppDirName = 'webapp'
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
-
-
-task copyToLib(type: Copy) {
-    into "$buildDir/server"
-    from(configurations.compile) {
-        include "webapp-runner*"
-    }
-}
-
-stage.dependsOn(copyToLib)
+task stage(dependsOn: ['build', 'installApp'])
