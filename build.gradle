@@ -17,6 +17,7 @@ repositories {
 }                                                                               
                                                                                 
 dependencies {                                                                  
+	  providedCompile 'org.apache.tomcat:tomcat-catalina:8.0.45'                    
   compile 'org.eclipse.jetty:jetty-servlet:7.4.5.v20110725'
   compile 'javax.servlet:servlet-api:2.5'
 }      
