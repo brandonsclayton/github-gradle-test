@@ -6,7 +6,7 @@ apply plugin: 'war'
 sourceSets {
   main {
     java {
-      srcDirs = ['src']
+      srcDirs = ['src/']
     }
   }
 }
@@ -28,7 +28,7 @@ war {
 task copyToLib(type: Copy) {
 	into "$buildDir/server"
 	from(configurations.compile) {
-	  include 'webapp-runner*'
+	  include "webapp-runner*"
   }
 }
 
