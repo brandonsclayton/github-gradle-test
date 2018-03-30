@@ -21,6 +21,12 @@ dependencies {
 	compile 'com.github.jsimone:webapp-runner:8.5.11.3'
 }      
 
+task stage() {
+  dependsOn clean, war
+}
+
+war.mustRunAfter clean
+
 war {
   webAppDirName = 'webapp'
 }
@@ -31,11 +37,5 @@ task copyToLib(type: Copy) {
 	  include "webapp-runner*"
   }
 }
-
-task stage() {
-  dependsOn clean, war
-}
-
-war.mustRunAfter clean
 
 stage.dependsOn(copyToLib)
